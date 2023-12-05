@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:daily_news/core/constants/app_constants.dart';
+import 'package:daily_news/config/env/env.dart';
 import 'package:daily_news/core/resouces/response_state.dart';
 import 'package:daily_news/features/daily_news/data/data_sources/remote/articles_client.dart';
 import 'package:daily_news/features/daily_news/data/mappers/article_mapper.dart';
@@ -15,10 +15,10 @@ class ArticlesRepositoryImpl extends ArticlesRepository {
   Future<ResponseState<List<ArticleEntity>>> getArticles({int page = 1}) async {
     try {
       final httpResponse = await articlesClient.getArticles(
-        apiKey: AppConstants.newsApiKey,
+        apiKey: Env.newsApiKey,
         page: page,
-        country: AppConstants.newsCountryQuery,
-        category: AppConstants.newsCategoryQuery,
+        country: Env.newsCountryQuery,
+        category: Env.newsCategoryQuery,
       );
       if (httpResponse.response.statusCode == HttpStatus.ok) {
         final articlesModels = httpResponse.data.articles ?? [];

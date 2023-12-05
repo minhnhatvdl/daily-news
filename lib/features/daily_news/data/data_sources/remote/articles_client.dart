@@ -1,10 +1,10 @@
-import 'package:daily_news/core/constants/app_constants.dart';
+import 'package:daily_news/config/env/env.dart';
 import 'package:daily_news/features/daily_news/data/models/articles_model.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 part 'articles_client.g.dart';
 
-@RestApi(baseUrl: AppConstants.newsApiBaseUrl)
+@RestApi(baseUrl: Env.newsApiBaseUrl)
 abstract class ArticlesClient {
   factory ArticlesClient(Dio dio) = _ArticlesClient;
 

@@ -27,7 +27,12 @@ class ArticlesBloc extends Bloc<ArticlesEvent, ArticlesState> {
         };
         emit(LoadedArticlesState(articles: allArticles, isMax: articles.isEmpty));
       case FailedResponse(error: var error):
-        emit(ErrorArticlesState(error: error!));
+        final localArticles = articlesUsecase.getLocalArticles();
+        if (localArticles.isNotEmpty) {
+          emit(LoadedLocalArticlesState(articles: localArticles));
+        } else {
+          emit(ErrorArticlesState(error: error!));
+        }
     }
   }
 }

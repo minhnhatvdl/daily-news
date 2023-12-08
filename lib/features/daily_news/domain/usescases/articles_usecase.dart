@@ -8,4 +8,6 @@ class ArticlesUsecase {
 
   Future<ResponseState<List<ArticleEntity>>> getArticles({required int page}) =>
       articlesRepository.getArticles(page: page);
+
+  List<ArticleEntity> getLocalArticles() => articlesRepository.getLocalArticles();
 }

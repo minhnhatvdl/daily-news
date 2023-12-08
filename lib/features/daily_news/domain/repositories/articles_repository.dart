@@ -3,4 +3,5 @@ import 'package:daily_news/features/daily_news/domain/entities/article_entity.da
 
 abstract class ArticlesRepository {
   Future<ResponseState<List<ArticleEntity>>> getArticles({required int page});
+  List<ArticleEntity> getLocalArticles();
 }

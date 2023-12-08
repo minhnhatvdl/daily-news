@@ -20,6 +20,10 @@ class LoadedArticlesState extends ArticlesState {
   List<Object?> get props => [articles, isMax];
 }
 
+class LoadedLocalArticlesState extends LoadedArticlesState {
+  LoadedLocalArticlesState({required super.articles, super.isMax = true});
+}
+
 class ErrorArticlesState extends ArticlesState {
   ErrorArticlesState({required this.error});
   final DioException error;
